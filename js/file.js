@@ -1,38 +1,38 @@
 let screenCalc = document.querySelector('.screen')
-let mark=true;
-let prev=false
+let markOperation = true;
+let prevResult = false
 
-function showValueOnSreen(e){
-    if(typeof e === "number"){
-        if(prev){
-            clearSreen()
+function showValueOnSreen(e) {
+    if (typeof e === "number") {
+        if (prevResult) {
+            clearSreen();
             screenCalc.textContent += e
-            prev=false
-        }else{
+            prevResult = false
+        } else {
             screenCalc.textContent += e
         }
-        mark = true;
+        markOperation = true;
     }
-    if(typeof e === "string" && mark){
-        if(prev){
-            prev=false
+    if (typeof e === "string" && markOperation) {
+        if (prevResult) {
+            prevResult = false
         }
         screenCalc.textContent += e;
-        mark=false
+        markOperation = false
     }
 }
-function clearSreen(){
-    screenCalc.textContent="";
+function clearSreen() {
+    screenCalc.textContent = "";
 }
-function showResults(){
+function showResults() {
     let result = screenCalc.textContent
-    screenCalc.textContent=eval(result)
-    prev=true
+    screenCalc.textContent = eval(result)
+    prevResult = true
 }
-function del(){
-    if(screenCalc.textContent){
-        let arr=screenCalc.textContent.split("")
+function del() {
+    if (screenCalc.textContent) {
+        let arr = screenCalc.textContent.split("")
         arr.pop()
-    screenCalc.textContent=arr.join("")
+        screenCalc.textContent = arr.join("")
     }
 }
